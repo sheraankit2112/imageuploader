@@ -118,8 +118,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = "/media/"
-MEDIA_ROOT= BASE_DIR / "media"
+MEDIA_URL = "/mediaa/"
+MEDIA_ROOT= BASE_DIR / "mediaa"
 STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
@@ -132,5 +132,5 @@ STATICFILES_DIRS = [
 ]
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.file'
-SESSION_FILE_PATH = os.path.join(BASE_DIR, 'session')
+SESSION_FILE_PATH = os.path.join(BASE_DIR, 'sessions')
 
