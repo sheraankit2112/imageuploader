@@ -1,0 +1,1 @@
+web: insta.wsgi gunicorn
