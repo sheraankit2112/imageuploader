@@ -10,15 +10,8 @@ from django.views.decorators.cache import cache_page
 
 @cache_page(100)
 def loginn(request):
-    if request.session:
-        if "username" in request.session.keys():
-            usernam=request.session["username"]
-            password=request.session['password']
-            fm=loginform({"username":usernam,"password":password})
-        else:
-            fm=loginform()
-    else:
-        fm=loginform()
+    
+    fm=loginform()
     if request.method=="POST":
         fm=loginform(request.POST)
         if fm.is_valid():
@@ -28,21 +21,7 @@ def loginn(request):
             user=authenticate(username=username,password=password)
             if user is not None:
                 login(request,user)
-                if request.session:
-                    if "username" in request.session.keys():
-                        if username==request.session['username']:
-                            pass
-                        else:
-                            request.session['username']=username
-                            request.session['password']=password
-
-                    else:
-                        request.session['username']=username
-                        request.session['password']=password
-
-                else:
-                    request.session['username']=username
-                    request.session['password']=password
+               
                 messages.success(request,"Login successfully")
                 return redirect("/homepage")
 
