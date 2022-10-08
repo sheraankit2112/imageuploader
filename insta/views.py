@@ -30,17 +30,17 @@ def loginn(request):
 def signup(request):
     fm=signupform()
     if request.method=="POST":
-        fm=signupform(request.POST,request.FILES)
+        fm=signupform(request.POST)
         if fm.is_valid():
             name=fm.cleaned_data['name']
             username=fm.cleaned_data['username']
             email=fm.cleaned_data['email']
             password=fm.cleaned_data['password']
-            profile=request.FILES.get("profile")
+            
             group=fm.cleaned_data['group']
 
             new_user = User.objects.create_user(username,email,password)
-            userbio(name=name,username=username,profile=profile).save()
+            userbio(name=name,username=username).save()
             
             group=Group.objects.get(name=group)
             new_user.groups.add(group)
@@ -54,8 +54,8 @@ def homepage(request):
     ob=userbio.objects.get(username=username)
     poste=userpost.objects.filter(username=username)
     if request.method=="POST":
-        pos=request.FILES.get("profile")
-        userpost(username=username,post=pos).save()
+        pos=request.POST.get("age")
+        userpost(username=username,age=pos).save()
         return redirect("/homepage")
     
 
