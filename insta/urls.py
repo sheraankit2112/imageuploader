@@ -27,3 +27,4 @@ urlpatterns = [
     path('alluser',views.allusername,name="alluser"),
     path('delpost/<int:id>',views.deletepost,name="deletepost")
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
++ static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
